@@ -12,6 +12,12 @@ void PID::Init(double Kp_, double Ki_, double Kd_) {
   /**
    * TODO: Initialize PID coefficients (and errors, if needed)
    */
+  Kd = Kp_;
+  Kp = Kp_;
+  Ki = Ki_;
+  p_error = 0;
+  i_error = 0;
+  d_error = 0;
 
 }
 
@@ -26,5 +32,5 @@ double PID::TotalError() {
   /**
    * TODO: Calculate and return the total error
    */
-  return 0.0;  // TODO: Add your total error calc here!
+  return p_error + i_error + d_error;  // TODO: Add your total error calc here!
 }
