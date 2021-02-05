@@ -14,10 +14,14 @@ The PID controller needs to be initialsed with certain gain values for each term
 
 ### Proportional term
 
+The proportional term is repsonsible for the majority of the response to control errors. The response intensity can be controlled by a constant Kp. When the gain is chosen too low, the response to errors will be slow, when too high it overcompensates and makes the system unstable.
 ### Integral term
 
+The integral term is repsonsible for correcting the total system error accumulated over time. The response intensity of this term can also be controlled by a gain constant Ki.
+When too high, the response can make the system overshoot it's target. It is usefull to compensate for system bias due to e.g slight errors in system configuration.
 ### Derivative term
 
+The derivative term compensates based on what has been previously been done to respond to an error. It helps in gradually decreasing the repsonse so that the desired system state can be aquired in a smoother fashion. Its effects can also be tuned with a gain Kd.
 ## Hyperparameters
 
 ## Explanatory video
@@ -28,7 +32,7 @@ The PID controller needs to be initialsed with certain gain values for each term
 - [ ] The PID procedure follows what was taught in the lessons.
 - [ ] Describe the effect each of the P, I, D components had in your implementation.
 - [ ] Describe how the final hyperparameters were chosen.
-- [ ] The vehicle must successfully drive a lap around the track. 
+- [ ] The vehicle must successfully drive a lap around the track.
 
 ## Resources
 
