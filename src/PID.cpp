@@ -18,6 +18,7 @@ void PID::Init(double Kp_, double Ki_, double Kd_) {
   p_error = 0;
   i_error = 0;
   d_error = 0;
+  cte_total = 0;
 
 }
 
@@ -39,6 +40,12 @@ double PID::P_term(double cte) {
 double PID::D_term(double cte, double prev_cte) {
   d_error = -Kd * (cte - prev_cte);
   return d_error;
+}
+
+double PID::I_term(double cte) {
+  cte_total += cte;
+  i_error = -Ki * (cte_total);
+  return i_error;
 }
 
 

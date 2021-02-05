@@ -28,8 +28,9 @@ class PID {
 
   double P_term(double cte);
 
-
   double D_term(double cte, double cte_prev);
+
+  double I_term(double cte);
 
   /**
    * Calculate the total PID error.
@@ -44,7 +45,8 @@ class PID {
   double p_error;
   double i_error;
   double d_error;
-
+  double cte_total;
+  
   /**
    * PID Coefficients
    */ 

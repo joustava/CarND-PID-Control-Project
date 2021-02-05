@@ -63,6 +63,7 @@ int main() {
            */
           double steer_value = pid.P_term(cte);
           steer_value += pid.D_term(cte, prev_cte);
+          steer_value += pid.I_term(cte);
           prev_cte = cte;
 
 
