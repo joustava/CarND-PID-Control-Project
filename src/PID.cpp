@@ -12,14 +12,17 @@ void PID::Init(double Kp_, double Ki_, double Kd_) {
   /**
    * TODO: Initialize PID coefficients (and errors, if needed)
    */
-  Kd = Kp_;
   Kp = Kp_;
   Ki = Ki_;
+  Kd = Kd_;
   p_error = 0;
   i_error = 0;
   d_error = 0;
 
 }
+
+// steering = -tau * crosstrack_error
+
 
 void PID::UpdateError(double cte) {
   /**
@@ -27,6 +30,15 @@ void PID::UpdateError(double cte) {
    */
 
 }
+
+double PID::P_term(double cte) {
+  return -Kp * cte;
+}
+
+// double PID::D_term(double cte) {
+//   return -Kd * cte - prev_cte;
+// }
+
 
 double PID::TotalError() {
   /**
