@@ -35,8 +35,9 @@ int main() {
 
   PID pid;
   pid.Init();
+  double prev_cte = 0;
 
-  h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
+  h.onMessage([&pid, &prev_cte](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
@@ -61,6 +62,8 @@ int main() {
            *   Maybe use another PID controller to control the speed!
            */
           double steer_value = pid.P_term(cte);
+          steer_value += pid.D_term(cte, prev_cte);
+          prev_cte = cte;
 
 
           

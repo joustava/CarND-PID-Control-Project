@@ -32,12 +32,14 @@ void PID::UpdateError(double cte) {
 }
 
 double PID::P_term(double cte) {
-  return -Kp * cte;
+  p_error = -Kp * cte;
+  return p_error;
 }
 
-// double PID::D_term(double cte) {
-//   return -Kd * cte - prev_cte;
-// }
+double PID::D_term(double cte, double prev_cte) {
+  d_error = -Kd * (cte - prev_cte);
+  return d_error;
+}
 
 
 double PID::TotalError() {
