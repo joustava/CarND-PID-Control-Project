@@ -15,9 +15,16 @@ class PID {
 
   /**
    * Initialize PID.
+   * 
+   * 1. find a Kp which makes system behave ok. (control)
+   * 2. find a Kd which improves dealing with load disturbance (i.e cornering)
+   * 3. find a Ki for stability
+   * 
    * @param (Kp_, Ki_, Kd_) The initial PID coefficients
    */
-  void Init(double Kp_ = 0.2, double Ki_ = 0.004, double Kd_ = 3.0);
+
+
+  void Init(double Kp_ = 0.085, double Ki_ = 0.00065, double Kd_ = 2.2);
 
   /**
    * Update the PID error variables given cross track error.

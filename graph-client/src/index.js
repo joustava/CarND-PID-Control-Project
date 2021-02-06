@@ -18,17 +18,19 @@ ws.onopen = function() {
   // request_data_interval = window.setInterval(requestData, 50);
 }
 
-ws.onmessage = function (event) { 
-    const data = JSON.parse(event.data);
+ws.onmessage = function (event) {
+    let matches = event.data.match(/\,(.*?)\]/)
+    let data = matches[1]
+    const pid = JSON.parse(data);
 
-    console.log(data);
+    let time = new Date();
 
-    // let samples = {
-    //     x: data.x, 
-    //     y: data.y, 
-    //     type: 'scatter',
-    // };
-    // Plotly.newPlot('sine-graph', [samples]);
+    let update = {
+      x:  [[time]],
+      y: [[pid.steering_angle]]
+    }
+
+    Plotly.extendTraces('graph', update, [0])
 };
 
 ws.onclose = function() {
@@ -36,3 +38,57 @@ ws.onclose = function() {
   // websocket is closed.
   // window.clearInterval(request_data_interval)
 };
+
+
+
+function rand() {
+  return Math.random()*(1.0-(-1.0)) + (-1.0)
+}
+
+var time = new Date();
+
+var data = [{
+  x: [time],
+  y: [rand()],
+  mode: 'lines',
+  name: 'Steering angle',
+  line: {color: '#80CAF6'}
+}]
+
+
+var layout = {
+  showlegend: true,
+  legend: {
+    x: 1.05
+  },
+  title: {
+    text: "PID Controller response",
+  },
+  xaxis: {
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    mirror: 'ticks',
+    gridcolor: '#bdbdbd',
+    gridwidth: 2,
+    zerolinecolor: '#969696',
+    zerolinewidth: 4,
+    linecolor: '#636363',
+    linewidth: 6
+  },
+  yaxis: {
+    range: [-1.5, 1.5],
+    showgrid: true,
+    zeroline: true,
+    showline: true,
+    mirror: 'ticks',
+    gridcolor: '#bdbdbd',
+    gridwidth: 2,
+    zerolinecolor: '#969696',
+    zerolinewidth: 4,
+    linecolor: '#636363',
+    linewidth: 6
+  }
+};
+
+Plotly.newPlot('graph', data, layout);

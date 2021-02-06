@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "dev": "parcel watch ./src/index.html",
+    "dev": "parcel watch ./src/index.html --dist-dir ./dist/dev",
     "start": "parcel serve ./src/index.html --dist-dir ./dist/dev",
     "build": "parcel build ./src/index.html --dist-dir ./dist/production",
     "test": "echo \"Error: no test specified\" && exit 1"

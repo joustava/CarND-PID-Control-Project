@@ -2,6 +2,8 @@
 
 > This repository contains the work for the PID Controller project in the Self-Driving Car Engineer Nanodegree Program of Udacity.
 
+The required writeup can be read from [WRITEUP](./WRITEUP.md).
+
 ## Prerequisites
 
 Check the [starter repo](https://github.com/udacity/CarND-PID-Control-Project) for the needed dependencies. More information is only accessible by people who are already enrolled in the
@@ -29,4 +31,6 @@ To run them:
 
 ## Extra
 
-web app displaying graph
+The original websocket server in main.cpp has been slightly changed from the original by making it broadcast the PID controller response instead of only sending the values to the simulator. This makes it possible to have other processes connect and get updates. With this change a simple web application could be created that shows the PID response over time in a plotly.js based graph.
+
+The app can be run by going into `./graph-client`, run `npm i` and then `npm start`. The app is then available at the url stated in the output. 
