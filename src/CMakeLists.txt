@@ -1,5 +1,6 @@
 add_library("${LIB_NAME}"
   PID.cpp
+  Optimizer.cpp
   SteeringController.cpp
 )
 
