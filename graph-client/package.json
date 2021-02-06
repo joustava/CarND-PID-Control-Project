@@ -2,7 +2,7 @@
   "name": "graph-client",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "./src/index.html",
   "scripts": {
     "dev": "parcel watch ./src/index.html --dist-dir ./dist/dev",
     "start": "parcel serve ./src/index.html --dist-dir ./dist/dev",

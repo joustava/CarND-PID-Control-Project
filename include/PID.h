@@ -1,5 +1,5 @@
-#ifndef PID_H
-#define PID_H
+#ifndef _PID_H_
+#define _PID_H_
 
 class PID {
  public:
@@ -22,9 +22,7 @@ class PID {
    * 
    * @param (Kp_, Ki_, Kd_) The initial PID coefficients
    */
-
-
-  void Init(double Kp_ = 0.085, double Ki_ = 0.00065, double Kd_ = 2.2);
+  void Init(double Kp_, double Ki_, double Kd_);
 
   /**
    * Update the PID error variables given cross track error.
@@ -32,12 +30,26 @@ class PID {
    */
   void UpdateError(double cte);
 
+  /**
+   * @brief Proportional term of the PID controller
+   * 
+   * @return double 
+   */
+  double P_term();
 
-  double P_term(double cte);
+  /**
+   * @brief  Derivative term of the PID controller
+   * 
+   * @return double 
+   */
+  double D_term();
 
-  double D_term(double cte, double cte_prev);
-
-  double I_term(double cte);
+  /**
+   * @brief  Integral term of the PID controller
+   * 
+   * @return double 
+   */
+  double I_term();
 
   /**
    * Calculate the total PID error.
@@ -52,7 +64,7 @@ class PID {
   double p_error;
   double i_error;
   double d_error;
-  double cte_total;
+  double cte_prev;
   
   /**
    * PID Coefficients

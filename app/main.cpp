@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <nlohmann/json.hpp>
-#include "PID.h"
+#include "SteeringController.h"
 
 // for convenience
 using nlohmann::json;
@@ -34,11 +34,10 @@ string hasData(string s) {
 int main() {
   uWS::Hub h;
 
-  PID pid;
-  pid.Init();
-  double prev_cte = 0;
+  SteeringController steering;
+  steering.init();
 
-  h.onMessage([&h, &pid, &prev_cte](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
+  h.onMessage([&h, &steering](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
@@ -62,13 +61,8 @@ int main() {
            * NOTE: Feel free to play around with the throttle and speed.
            *   Maybe use another PID controller to control the speed!
            */
-          double steer_value = pid.P_term(cte);
-          steer_value += pid.D_term(cte, prev_cte);
-          steer_value += pid.I_term(cte);
-          prev_cte = cte;
+          double steer_value = steering.update(cte);
 
-
-          
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value 
                     << std::endl;
@@ -90,11 +84,11 @@ int main() {
     }  // end websocket message if
   }); // end h.onMessage
 
-  h.onConnection([&h](uWS::WebSocket<uWS::SERVER> ws, uWS::HttpRequest req) {
+  h.onConnection([](uWS::WebSocket<uWS::SERVER> ws, uWS::HttpRequest req) {
     std::cout << "Connected!!!" << std::endl;
   });
 
-  h.onDisconnection([&h](uWS::WebSocket<uWS::SERVER> ws, int code, 
+  h.onDisconnection([](uWS::WebSocket<uWS::SERVER> ws, int code, 
                          char *message, size_t length) {
     ws.close();
     std::cout << "Disconnected" << std::endl;

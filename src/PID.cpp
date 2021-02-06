@@ -1,57 +1,38 @@
 #include "PID.h"
 
-/**
- * TODO: Complete the PID class. You may add any additional desired functions.
- */
-
 PID::PID() {}
 
 PID::~PID() {}
 
 void PID::Init(double Kp_, double Ki_, double Kd_) {
-  /**
-   * TODO: Initialize PID coefficients (and errors, if needed)
-   */
   Kp = Kp_;
   Ki = Ki_;
   Kd = Kd_;
   p_error = 0;
   i_error = 0;
   d_error = 0;
-  cte_total = 0;
-
+  cte_prev = 0;
 }
-
-// steering = -tau * crosstrack_error
-
 
 void PID::UpdateError(double cte) {
-  /**
-   * TODO: Update PID errors based on cte.
-   */
-
+    p_error = cte;
+    d_error = cte - cte_prev;
+    i_error += cte;
+    cte_prev = cte;
 }
 
-double PID::P_term(double cte) {
-  p_error = -Kp * cte;
-  return p_error;
+double PID::P_term() {
+  return Kp * p_error;
 }
 
-double PID::D_term(double cte, double prev_cte) {
-  d_error = -Kd * (cte - prev_cte);
-  return d_error;
+double PID::D_term() {
+  return Kd * d_error;
 }
 
-double PID::I_term(double cte) {
-  cte_total += cte;
-  i_error = -Ki * (cte_total);
-  return i_error;
+double PID::I_term() {
+  return Ki * i_error;
 }
-
 
 double PID::TotalError() {
-  /**
-   * TODO: Calculate and return the total error
-   */
-  return p_error + i_error + d_error;  // TODO: Add your total error calc here!
+  return -(P_term() + D_term() + I_term());
 }
