@@ -26,11 +26,11 @@ ws.onmessage = function (event) {
     let time = new Date();
 
     let update = {
-      x:  [[time]],
-      y: [[pid.steering_angle]]
+      x: [[time], [time]],
+      y: [[pid.steering_angle], [pid.throttle]]
     }
 
-    Plotly.extendTraces('graph', update, [0])
+    Plotly.extendTraces('graph', update, [0, 1])
 };
 
 ws.onclose = function() {
@@ -47,13 +47,22 @@ function rand() {
 
 var time = new Date();
 
-var data = [{
-  x: [time],
-  y: [rand()],
-  mode: 'lines',
-  name: 'Steering angle',
-  line: {color: '#80CAF6'}
-}]
+var data = [
+  {
+    x: [time],
+    y: [0],
+    mode: 'lines',
+    name: 'Steering angle',
+    line: {color: '#80CAF6'}
+  },
+  {
+    x: [time],
+    y: [0],
+    mode: 'lines',
+    name: 'Throttle',
+    line: {color: '#ad1f40'}
+  }
+]
 
 
 var layout = {

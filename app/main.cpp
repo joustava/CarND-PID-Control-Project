@@ -6,6 +6,19 @@
 #include <nlohmann/json.hpp>
 #include "SteeringController.h"
 
+// #ifdef DEBUG
+
+// #define DEBUG_STDERR(x) (std::cerr << (x))
+// #define DEBUG_STDOUT(x) (std::cout << (x))
+
+// #else 
+
+// #define DEBUG_STDERR(x) do{}while(0)
+// #define DEBUG_STDOUT(x) do{}while(0)
+
+// #endif
+
+
 // for convenience
 using nlohmann::json;
 using std::string;
