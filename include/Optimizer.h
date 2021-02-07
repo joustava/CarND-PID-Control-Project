@@ -4,13 +4,21 @@
 #include <vector>
 #include "Controller.h"
 
+/**
+ * @brief Optimizer using the Twiddle Algorithm based on https://martin-thoma.com/twiddle/
+ */
 class Optimizer {
   private:
     double tolerance = 0.001;
   public:
     Optimizer();
     virtual ~Optimizer();
-    void run(Controller* &ctrl);
+    /**
+     * @brief optimizes the controller gains by applying an optimization algorithm.
+     * 
+     * @param ctrl Controller to be optimized
+     */
+    void run(Controller* ctrl);
 };
 
 #endif

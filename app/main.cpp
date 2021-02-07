@@ -35,7 +35,7 @@ int main() {
   uWS::Hub h;
 
   SteeringController steering;
-  steering.init();
+  // steering.init();
 
   h.onMessage([&h, &steering](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
@@ -59,8 +59,8 @@ int main() {
           double steer_value = steering.update(cte);
 
           // DEBUG
-          std::cout << "CTE: " << cte << " Steering Value: " << steer_value 
-                    << std::endl;
+          // std::cout << "CTE: " << cte << " Steering Value: " << steer_value 
+          //           << ", speed" << speed << std::endl;
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;

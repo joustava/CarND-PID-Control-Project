@@ -15,24 +15,56 @@ class SteeringController: public Controller {
   private:
     PID pid;
     Optimizer opt;
-
+    bool is_optimized = false;
   public:
-    SteeringController();
+    SteeringController(const double Kp_ = 0.085, const double Ki_ = 0.00065, const double Kd_ = 2.2, bool optimize = false);
+    // SteeringController(double Kp_, double Ki_, double Kd_, bool optimize);
     virtual ~SteeringController();
+    
     /**
-     * @brief Initialize controller with PID gains.
+     * @brief Initialize SteeringController with PID gains.
      *
      * 1. find a Kp which makes system behave ok. (control)
      * 2. find a Kd which improves dealing with load disturbance (i.e cornering)
      * 3. find a Ki for stability
      * 
+     * The default values are sufficient to get the simulation go around the track several times.
+     * 
      * @param Kp_ 
      * @param Ki_ 
      * @param Kd_ 
      */
-    virtual void init(double Kp_ = 0.085, double Ki_ = 0.00065, double Kd_ = 2.2) override;
-    virtual double update(double cte) override;
-    virtual double error() override;
+    // virtual void init(const double Kp_ = 0.085, const double Ki_ = 0.00065, const double Kd_ = 2.2, bool optimize = false) override;
+    
+    /**
+     * @brief Updates process error and returns resulting steering response angle.
+     * 
+     * @param cte 
+     * @return double 
+     */
+    virtual double update(const double cte) override;
+
+    /**
+     * @brief returns the current total CTE of the process.
+     * 
+     * @return double 
+     */
+    virtual double error() const override;
+
+    /**
+     * @brief returns the current process gains.
+     * 
+     * @return std::vector<double> 
+     */
+    virtual std::vector<double> gains() const override;
+
+    /**
+     * @brief updates the process gains.
+     * 
+     * @param gains updated gains
+     */
+    virtual void adjust(const std::vector<double> &gains) override;
+
 };
 
 #endif
