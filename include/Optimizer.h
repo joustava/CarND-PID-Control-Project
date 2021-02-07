@@ -18,7 +18,7 @@ class Optimizer {
      * 
      * @param ctrl Controller to be optimized
      */
-    void run(Controller* ctrl);
+    void run(Controller* ctrl) const;
 };
 
 #endif

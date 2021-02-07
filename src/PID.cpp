@@ -1,8 +1,8 @@
 #include "PID.h"
 
 PID::PID(const double Kp_, const double Ki_, const double Kd_) : 
-  Kp{Kp_}, Ki{Ki_}, Kd{Kd_},
-  p_error{0}, i_error{0}, d_error{0}, cte_prev{0} { }
+  p_error{0}, i_error{0}, d_error{0}, cte_prev{0},
+  Kp{Kp_}, Ki{Ki_}, Kd{Kd_} { }
 
 PID::~PID() {}
 

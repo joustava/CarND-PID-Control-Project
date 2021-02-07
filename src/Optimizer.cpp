@@ -7,7 +7,7 @@ Optimizer::Optimizer() { }
 Optimizer::~Optimizer() { }
 
 
-void Optimizer::run(Controller* ctrl) {
+void Optimizer::run(Controller* ctrl) const {
   std::vector<double> deltas;
   std::transform(ctrl->gains().begin(), ctrl->gains().end(), deltas.begin(), [](const double &gain){ return gain/10.0; });   
   std::vector<double> params{ctrl->gains()};
