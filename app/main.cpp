@@ -72,13 +72,14 @@ int main() {
           double angle = std::stod(j[1]["steering_angle"].get<string>());
           
           double steer_value = steering.update(cte);
-          double throttle_value = throttle.update(cte);
+          double throttle_value = throttle.update(steer_value);
           // DEBUG
           // std::cout << "CTE: " << cte << " Steering Value: " << steer_value 
           //           << ", speed" << speed << std::endl;
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
+          // msgJson["throttle"] = 0.4; //throttle_value;
           msgJson["throttle"] = throttle_value;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;

@@ -22,7 +22,7 @@ class ThrottleController: public Controller {
     virtual ~ThrottleController();
 
     /**
-     * @brief Updates process error and returns resulting steering response angle.
+     * @brief Updates process error and returns resulting throttle response.
      * 
      * @param cte 
      * @return double 
