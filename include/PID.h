@@ -85,6 +85,7 @@ class PID {
    * @param Kd 
    */
   void adjust(const double Kp_, const double Ki_, const double Kd_);
+  void adjust(std::vector<double> &gains);
 
  private:
   /**

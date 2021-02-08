@@ -6,7 +6,7 @@ SteeringController::SteeringController(double Kp_, double Ki_, double Kd_, bool 
 SteeringController::~SteeringController() { }
 
 double SteeringController::update(double cte) {
-  if(is_optimized) opt.run(this);
+  if(is_optimized) opt.run(pid);
   pid.UpdateError(cte);
   double steer_value = pid.TotalError();
   if (steer_value < -1.0) return -1.0;

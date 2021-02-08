@@ -39,3 +39,9 @@ void PID::adjust(const double Kp_, const double Ki_, const double Kd_) {
   Ki = Ki_;
   Kd = Kd_;
 }
+
+void PID::adjust(std::vector<double> &gains) {
+  Kp = gains[0];
+  Ki = gains[1];
+  Kd = gains[2];
+}

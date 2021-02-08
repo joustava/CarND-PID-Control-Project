@@ -2,14 +2,15 @@
 #define _OPTIMIZER_H_
 
 #include <vector>
-#include "Controller.h"
+#include "PID.h"
 
 /**
  * @brief Optimizer using the Twiddle Algorithm based on https://martin-thoma.com/twiddle/
- */
+ * 
+ * */
 class Optimizer {
   private:
-    double tolerance = 0.001;
+    double tolerance = 0.2;
   public:
     Optimizer();
     virtual ~Optimizer();
@@ -18,7 +19,7 @@ class Optimizer {
      * 
      * @param ctrl Controller to be optimized
      */
-    void run(Controller* ctrl) const;
+    void run(PID &pid) const;
 };
 
 #endif

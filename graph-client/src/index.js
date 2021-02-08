@@ -2,25 +2,21 @@ import classes from './index.css';
 import Plotly from 'plotly.js-dist'
 const WebSocket = require('isomorphic-ws');
 
- 
 /**
  * Create a socket client connecting to the PID Controller.
  * 
  * This client socket receives broadcasts from the socket server only
  * on simulator updates.
  */
-const ws = new WebSocket("ws://localhost:4567/")
+const ws = new WebSocket("ws://localhost:4567/");
 
 ws.onopen = function() {
-  console.info("PID Controller Client socket opened...")
-  // Web Socket is connected, send data using send()
-  // ws.send("Waiting for PID controller data");
-  // request_data_interval = window.setInterval(requestData, 50);
+  console.info("PID Controller Client socket opened...");
 }
 
 ws.onmessage = function (event) {
-    let matches = event.data.match(/\,(.*?)\]/)
-    let data = matches[1]
+    let matches = event.data.match(/\,(.*?)\]/);
+    let data = matches[1];
     const pid = JSON.parse(data);
 
     let time = new Date();
@@ -30,19 +26,15 @@ ws.onmessage = function (event) {
       y: [[pid.steering_angle], [pid.throttle]]
     }
 
-    Plotly.extendTraces('graph', update, [0, 1])
-};
+    Plotly.extendTraces('graph', update, [0, 1]);
+}
 
 ws.onclose = function() {
-  console.info("PID Controller Client socket closing...")
-  // websocket is closed.
-  // window.clearInterval(request_data_interval)
-};
-
-
+  console.info("PID Controller Client socket closing...");
+}
 
 function rand() {
-  return Math.random()*(1.0-(-1.0)) + (-1.0)
+  return Math.random()*(1.0-(-1.0)) + (-1.0);
 }
 
 var time = new Date();
@@ -68,7 +60,9 @@ var data = [
 var layout = {
   showlegend: true,
   legend: {
-    x: 1.05
+    x: 1,
+    xanchor: 'right',
+    y: 1
   },
   title: {
     text: "PID Controller response",

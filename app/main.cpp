@@ -82,7 +82,7 @@ int main() {
           msgJson["throttle"] = 0.3; //throttle_value;
           // msgJson["throttle"] = throttle_value;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
-          std::cout << msg << std::endl;
+          std::cout << msg << speed << std::endl;
           
           h.getDefaultGroup<uWS::SERVER>().broadcast(msg.data(), msg.length(), uWS::OpCode::TEXT);
           // ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);

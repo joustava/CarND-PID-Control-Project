@@ -9,11 +9,10 @@ ThrottleController::ThrottleController(double Kp_, double Ki_, double Kd_, bool 
 ThrottleController::~ThrottleController() { }
 
 double ThrottleController::update(double cte) {
-  if(is_optimized) opt.run(this);
+  if(is_optimized) opt.run(pid);
   
   pid.UpdateError(cte);
-  double error = std::abs(pid.TotalError());
-  double throttle_value = (error + 1.0) / 2;
+  double throttle_value = pid.TotalError();
 
   if (throttle_value < 0) return 0.0;
   if (throttle_value > 1.0) return 0.95;
