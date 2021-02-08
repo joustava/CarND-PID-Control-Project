@@ -1,4 +1,4 @@
-#include "support.cpp"
+#include <catch2/catch.hpp>
 
 static int Factorial( int number ) {
    return number <= 1 ? number : Factorial( number - 1 ) * number;  // fail
@@ -6,5 +6,5 @@ static int Factorial( int number ) {
 }
 
 TEST_CASE( "Factorial of 0 is 1 (fail)", "[single-file]" ) {
-    REQUIRE( Factorial(0) == 1 );
+    REQUIRE( Factorial(0) == 1);
 }

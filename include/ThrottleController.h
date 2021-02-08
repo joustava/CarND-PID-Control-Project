@@ -1,26 +1,26 @@
-#ifndef _STEERING_CTRL_
-#define _STEERING_CTRL_
+#ifndef _THROTTLE_CTRL_
+#define _THROTTLE_CTRL_
 
 #include "Controller.h"
 #include "Optimizer.h"
 #include "PID.h"
 
 /**
- * @brief SteeringController takes care of steering specific gains and output range.
+ * @brief ThrottleController takes care of throttle specific gains and output range.
  * 
- * The steering controller wraps a PID controller to do the actual error response calculations.
- * It uses an optimizer to update the PID gain. 
+ * The throttle controller wraps a PID controller to do the actual error response calculations.
+ * It uses an optimizer to update the PID gains. 
  */
-class SteeringController: public Controller {
+class ThrottleController: public Controller {
   private:
     PID pid;
     Optimizer opt;
     bool is_optimized = false;
   public:
-    SteeringController(const double Kp_ = 0.085, const double Ki_ = 0.00065, const double Kd_ = 2.2, bool optimize = false);
-    // SteeringController(double Kp_, double Ki_, double Kd_, bool optimize);
-    virtual ~SteeringController();
-    
+    ThrottleController(const double Kp_ = 0.01, const double Ki_ = 0.0, const double Kd_ = 0.0, bool optimize = false);
+    // ThrottleController(double Kp_, double Ki_, double Kd_, bool optimize);
+    virtual ~ThrottleController();
+
     /**
      * @brief Updates process error and returns resulting steering response angle.
      * 

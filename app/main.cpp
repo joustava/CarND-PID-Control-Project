@@ -5,6 +5,7 @@
 #include <string>
 #include <nlohmann/json.hpp>
 #include "SteeringController.h"
+#include "ThrottleController.h"
 
 // #ifdef DEBUG
 
@@ -49,8 +50,9 @@ int main() {
 
   SteeringController steering;
   // steering.init();
+  ThrottleController throttle;
 
-  h.onMessage([&h, &steering](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
+  h.onMessage([&h, &steering, &throttle](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
@@ -67,17 +69,17 @@ int main() {
           // j[1] is the data JSON object
           double cte = std::stod(j[1]["cte"].get<string>());
           double speed = std::stod(j[1]["speed"].get<string>());
-          // double angle = std::stod(j[1]["steering_angle"].get<string>());
+          double angle = std::stod(j[1]["steering_angle"].get<string>());
           
           double steer_value = steering.update(cte);
-
+          double throttle_value = throttle.update(cte);
           // DEBUG
           // std::cout << "CTE: " << cte << " Steering Value: " << steer_value 
           //           << ", speed" << speed << std::endl;
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-          msgJson["throttle"] = 0.3;
+          msgJson["throttle"] = throttle_value;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           

@@ -2,6 +2,7 @@ add_library("${LIB_NAME}"
   PID.cpp
   Optimizer.cpp
   SteeringController.cpp
+  ThrottleController.cpp
 )
 
 target_include_directories("${LIB_NAME}" PUBLIC ../include)
