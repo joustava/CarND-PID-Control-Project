@@ -12,7 +12,7 @@ double ThrottleController::update(double cte) {
   if(is_optimized) opt.run(this);
   
   pid.UpdateError(cte);
-  double error = pid.TotalError();
+  double error = std::abs(pid.TotalError());
   double throttle_value = (error + 1.0) / 2;
 
   if (throttle_value < 0) return 0.0;
