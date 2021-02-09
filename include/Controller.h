@@ -1,3 +1,13 @@
+/**
+ * @file Controller.h
+ * @author Joost Oostdijk (joustava@gmail.com)
+ * @brief Controller base class that encapsulates the PID processing steps.
+ * @version 0.1
+ * @date 2021-02-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef _CONTROLLER_H_
 #define _CONTROLLER_H_
 

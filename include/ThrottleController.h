@@ -1,3 +1,13 @@
+/**
+ * @file ThrottleController.h
+ * @author Joost Oostdijk (joustava@gmail.com)
+ * @brief ThrottleController takes care of throttle specific gains and output range.
+ * @version 0.1
+ * @date 2021-02-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef _THROTTLE_CTRL_
 #define _THROTTLE_CTRL_
 

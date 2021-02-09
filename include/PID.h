@@ -1,3 +1,13 @@
+/**
+ * @file PID.h
+ * @author Joost Oostdijk (joustava@gmail.com)
+ * @brief PID Controller
+ * @version 0.1
+ * @date 2021-02-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
 #ifndef _PID_H_
 #define _PID_H_
 

@@ -1,4 +1,14 @@
-#ifndef _STEERING_CTRL_
+/**
+ * @file SteeringController.h
+ * @author Joost Oostdijk (joustava@gmail.com)
+ * @brief SteeringController takes care of steering specific gains and output range.
+ * @version 0.1
+ * @date 2021-02-09
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+ifndef _STEERING_CTRL_
 #define _STEERING_CTRL_
 
 #include "Controller.h"

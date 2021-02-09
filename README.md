@@ -1,4 +1,4 @@
-# C++ PID Controller
+# PID Controller README
 
 > This repository contains the work for the PID Controller project in the Self-Driving Car Engineer Nanodegree Program of Udacity.
 

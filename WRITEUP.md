@@ -1,10 +1,10 @@
-# PID Controller
+# PID Controller Writeup
 
->
+> This repository contains the work for the PID Controller project in the Self-Driving Car Engineer Nanodegree Program of Udacity.
 
 ## Running
 
-See [README](./README.md) for details.
+See [README](./README.md) for details on running the project.
 
 ## Implementation
 
