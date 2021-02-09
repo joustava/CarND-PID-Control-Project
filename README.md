@@ -127,5 +127,6 @@ valgrind --leak-check=yes ./bin/pid
 
 ## Resources
 
-- [interesting read about Cpp tooling](https://invisible-island.net/personal/lint-tools.html#background)
+- [Interesting read about C++ tooling](https://invisible-island.net/personal/lint-tools.html#background)
 - [Debug Macros](https://stackoverflow.com/questions/14251038/debug-macros-in-c)
+- [Modern CMake](https://cliutils.gitlab.io/modern-cmake/)
