@@ -10,7 +10,7 @@
  * */
 class Optimizer {
   private:
-    double tolerance = 0.2;
+    double tolerance = 0.05;
   public:
     Optimizer();
     virtual ~Optimizer();

@@ -26,36 +26,41 @@ void Optimizer::run(PID &pid) const {
   std::transform(params.begin(), params.end(), deltas.begin(), [](const double &gain){ return gain/10.0; });   
 
   double best_err = pid.TotalError();
-  double sum;
+  double sum = std::accumulate(deltas.begin(), deltas.end(), 0.0);
   // return;
   int it = 0;
-  printf("%-15s | %-15s | %-15s | %-15s | %-15s |\n", "best error", "Kp", "Ki", "Kd", "delta sum");
-  while(((sum = std::accumulate(deltas.begin(), deltas.end(), 0.0))) && it <= 30) {
+  printf("%-15s | %-15s | %-15s | %-15s | %-15s | %-15s |\n", "iteration", "best error", "Kp", "Ki", "Kd", "delta sum");
+  printf("Initial state\n");
+  printf("%-15.d | %-15.8f | %-15.8f | %-15.8f | %-15.8f | %-15.8f |\n", 0, best_err, pid.gains()[0], pid.gains()[1], pid.gains()[2], sum);
+  while(((sum > tolerance)) && std::abs(best_err) > 0.1 && it < 30) {
   
     it++;
     for(int i = 0; i < deltas.size(); i++) {
-      printf("%-15.8f | %-15.8f | %-15.8f | %-15.8f | %-15.8f |\n", best_err, pid.gains()[0], pid.gains()[1], pid.gains()[2], sum);
       params[i] += deltas[i];
       pid.adjust(params);
       double err = pid.TotalError();;
 
       if(err < best_err) {
+        printf("Improvement detected in positive direction\n");
         best_err = err;
         deltas[i] *= 1.1;
       } else {
+        printf("No improvement detected in positive direction\n");
         params[i] -= 2.0 * deltas[i];
         pid.adjust(params);
         best_err = pid.TotalError();;
         if(err < best_err) {
+          printf("Improvement detected in other\n");
           best_err = err;
-          deltas[i] *= 1.05;
+          deltas[i] *= 1.1;
         } else {
+          printf("Decrease step size\n");
           params[i] += deltas[i];
           deltas[i] *= 0.9;
         }
       }
+      sum = std::accumulate(deltas.begin(), deltas.end(), 0.0);
+      printf("%-15.d | %-15.8f | %-15.8f | %-15.8f | %-15.8f | %-15.8f |\n", it, best_err, pid.gains()[0], pid.gains()[1], pid.gains()[2], sum);
     }
-  }
-
-  
+  }  
 }
