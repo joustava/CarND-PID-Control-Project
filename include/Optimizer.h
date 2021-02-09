@@ -22,8 +22,18 @@ class Optimizer {
   private:
     double tolerance = 0.05;
   public:
+    /**
+     * @brief Construct a new Optimizer object.
+     * 
+     */
     Optimizer();
+
+    /**
+     * @brief Destroy the Optimizer object
+     * 
+     */
     virtual ~Optimizer();
+    
     /**
      * Optimize the controller gains by applying an optimization algorithm.
      * 

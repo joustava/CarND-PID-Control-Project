@@ -1,7 +1,7 @@
 /**
  * @file PID.h
  * @author Joost Oostdijk (joustava@gmail.com)
- * @brief PID Controller
+ * @brief PID Controller.
  * @version 0.1
  * @date 2021-02-09
  * 
@@ -13,6 +13,9 @@
 
 #include <vector>
 
+/**
+ * @brief Proportional, Integral and Derivative controller.
+ */
 class PID {
   public:
   /** 
@@ -28,25 +31,14 @@ class PID {
    * @param Kd_ The initial D coefficient/gain
    */
   PID(double Kp_, double Ki_, double Kd_);
-  // PID();
-  virtual ~PID();
-
-  /** 
-   * @brief PID contructor.
-   * 
-   * Manual optimization:
-   * - 1. find a Kp which makes system behave ok. (control)
-   * - 2. find a Kd which improves dealing with load disturbance (i.e cornering)
-   * - 3. find a Ki for stability
-   * 
-   * @param Kp_ The initial P coefficient/gain
-   * @param Ki_ The initial I coefficient/gain
-   * @param Kd_ The initial D coefficient/gain
-   */
-  // void Init(double Kp_, double Ki_, double Kd_);
 
   /**
-   * @brief Update the PID error variables given cross track error.
+   * @brief Destroy the PID object
+   */
+  virtual ~PID();
+
+  /**
+   * @brief Update the PID error variables based on the supplied cross track error (CTE).
    * 
    * @param cte The current cross track error
    */
@@ -74,7 +66,7 @@ class PID {
   double I_term() const;
 
   /**
-   * @brief Calculates the total PID error.
+   * @brief Calculate the total PID error.
    * 
    * @return double The total PID error
    */
@@ -88,7 +80,7 @@ class PID {
   std::vector<double> gains() const;
 
   /**
-   * @brief Adjust PID gains
+   * @brief Adjust PID gains/coefficients
    * 
    * @param std::vector<double> containing Kp, Ki and Kd in that order. 
    */

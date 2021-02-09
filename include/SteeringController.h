@@ -27,8 +27,20 @@ class SteeringController: public Controller {
     Optimizer opt;
     bool is_optimized = false;
   public:
+    /**
+     * @brief Construct a new Steering Controller object
+     * 
+     * @param Kp_ Proportional gain
+     * @param Ki_ Integral gain
+     * @param Kd_ Deriviative gain
+     * @param optimize enable/disable process optimization, default = false.
+     */
     SteeringController(const double Kp_ = 0.085, const double Ki_ = 0.00065, const double Kd_ = 2.2, bool optimize = false);
-    // SteeringController(double Kp_, double Ki_, double Kd_, bool optimize);
+    
+    /**
+     * @brief Destroy the Steering Controller object
+     * 
+     */
     virtual ~SteeringController();
     
     /**

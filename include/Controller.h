@@ -18,18 +18,18 @@
  */
 class Controller {
   public:
-    Controller() = default;
-    virtual ~Controller() = default;
-    
     /**
-     * @brief Set the initial process gains
+     * @brief Construct a new Controller object.
      * 
-     * @param Kp_ 
-     * @param Ki_ 
-     * @param Kd_ 
      */
-    // virtual void init(const double Kp_, const double Ki_, const double Kd_, bool optimize = false) = 0;
-    
+    Controller() = default;
+
+    /**
+     * @brief Destroy the Controller object.
+     * 
+     */
+    virtual ~Controller() = default;
+
     /**
      * @brief update error calculations
      * 

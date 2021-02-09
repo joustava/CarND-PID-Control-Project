@@ -18,8 +18,9 @@
 /**
  * @brief ThrottleController takes care of throttle specific gains and output range.
  * 
- * The throttle controller wraps a PID controller to do the actual error response calculations.
- * It uses an optimizer to update the PID gains. 
+ * The throttle controller wraps a PID Controller to do the actual error response calculations.
+ * It uses an Optimizer to update the PID gains. 
+ *
  */
 class ThrottleController: public Controller {
   private:
@@ -27,8 +28,20 @@ class ThrottleController: public Controller {
     Optimizer opt;
     bool is_optimized = false;
   public:
+    /**
+     * @brief Construct a new Throttle Controller object
+     * 
+     * @param Kp_ Proportional gain
+     * @param Ki_ Integral gain
+     * @param Kd_ Deriviative gain
+     * @param optimize enable/disable process optimization, default = false.
+     */
     ThrottleController(const double Kp_ = 0.01, const double Ki_ = 0.0, const double Kd_ = 0.0, bool optimize = false);
-    // ThrottleController(double Kp_, double Ki_, double Kd_, bool optimize);
+    
+    /**
+     * @brief Destroy the Throttle Controller object
+     * 
+     */
     virtual ~ThrottleController();
 
     /**
