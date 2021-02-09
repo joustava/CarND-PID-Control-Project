@@ -45,7 +45,7 @@ The below video shows the response of the car when using a PID controller for st
 
 | Video 1. PID controlled car driving one round around the simulation track |
 |---------------------------------------------------------------------------|
-| ![Video 1.](./writeup-assets/steering_pid_response_track.mv4) |
+| ![Video 1.](./writeup-assets/steering_pid_response_track.m4v) |
 
 The Twiddle based optimizer (`./src/Optimizer.cpp`) is not enabled as it is still a work in progress.
 
