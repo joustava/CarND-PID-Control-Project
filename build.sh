@@ -4,7 +4,7 @@
 cd `dirname $0`
 
 # Clean
-./clean.sh
+#./clean.sh
 
 # Compile
 mkdir -p build

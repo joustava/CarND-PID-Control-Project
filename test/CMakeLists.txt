@@ -11,6 +11,7 @@ FetchContent_MakeAvailable(Catch2)
 
 add_executable(${TEST_LIB_NAME}
   support.cpp
+  PID_test.cpp
   # add tests
 )
 

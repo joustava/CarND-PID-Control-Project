@@ -1,5 +1,6 @@
-.main {
-  /* Reference an image file */
-  /* background: url('./images/background.png'); */
-  color: red;
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  color: #8080FF;
+  background-color: #fefefa;
 }
