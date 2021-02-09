@@ -30,6 +30,7 @@ The derivative term compensates based on what has been previously been done to r
 The gains were set manually by experimenting and then inspecting the response on the simulator and the additional graph which plots the steering angle over time.
 
 | Fig 1. PID response graph of one round around the simulation track |
+| -------------------------------------------------------------------|
 | ![Figure 1.](./writeup-assets/steering_pid_response.png) |
 
 The general aproach was to first find a Kp which make the response oscillate with both Ki and Kd set to 0.0.
@@ -43,7 +44,8 @@ Then final value Kd was chosen so that the car could react quicker in the case o
 The below video shows the response of the car when using a PID controller for steering only.
 
 | Video 1. PID controlled car driving one round around the simulation track |
-| ![Figure 1.](./writeup-assets/steering_pid_response.mv4) |
+|---------------------------------------------------------------------------|
+| ![Video 1.](./writeup-assets/steering_pid_response.mv4) |
 
 The Twiddle based optimizer (`./src/Optimizer.cpp`) is not enabled as it is still a work in progress.
 
