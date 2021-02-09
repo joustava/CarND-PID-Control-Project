@@ -40,9 +40,12 @@ Then final value Kd was chosen so that the car could react quicker in the case o
 
 ## Explanatory video
 
+The below video shows the response of the car when using a PID controller for steering only.
+
 | Video 1. PID controlled car driving one round around the simulation track |
 | ![Figure 1.](./writeup-assets/steering_pid_response.mv4) |
 
+The Twiddle based optimizer (`./src/Optimizer.cpp`) is not enabled as it is still a work in progress.
 
 ## Checklist
 
