@@ -81,7 +81,7 @@ class PID {
   double TotalError() const;
 
   /**
-   * @brief returns the set gains as vector in P,I,D order.
+   * @brief returns current gains as std::vector<double> in Kp, Ki and Kd order.
    * 
    * @return std::vector<double> 
    */
@@ -90,11 +90,8 @@ class PID {
   /**
    * @brief Adjust PID gains
    * 
-   * @param Kp 
-   * @param Ki 
-   * @param Kd 
+   * @param std::vector<double> containing Kp, Ki and Kd in that order. 
    */
-  void adjust(const double Kp_, const double Ki_, const double Kd_);
   void adjust(std::vector<double> &gains);
 
  private:

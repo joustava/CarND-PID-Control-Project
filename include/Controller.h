@@ -37,27 +37,6 @@ class Controller {
      * @return double 
      */
     virtual double update(const double cte) = 0;
-    
-    /**
-     * @brief Helper for optimization, returns the current process error
-     * 
-     * @return double 
-     */
-    virtual double error() const = 0;
-    
-    /**
-     * @brief Helper for optimization, returns the current process gains.
-     * 
-     * @return std::vector<double> 
-     */
-    virtual std::vector<double> gains() const = 0;
-
-    /**
-     * @brief Helper for optimization, updates the process gains.
-     * 
-     * @param gains updated gains
-     */
-    virtual void adjust(const std::vector<double> &gains) = 0;
 };
 
 #endif

@@ -38,27 +38,6 @@ class ThrottleController: public Controller {
      * @return double 
      */
     virtual double update(const double cte) override;
-
-    /**
-     * @brief returns the current total CTE of the process.
-     * 
-     * @return double 
-     */
-    virtual double error() const override;
-
-    /**
-     * @brief returns the current process gains.
-     * 
-     * @return std::vector<double> 
-     */
-    virtual std::vector<double> gains() const override;
-
-    /**
-     * @brief updates the process gains.
-     * 
-     * @param gains updated gains
-     */
-    virtual void adjust(const std::vector<double> &gains) override;
 };
 
 #endif

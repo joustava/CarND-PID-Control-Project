@@ -13,16 +13,3 @@ double SteeringController::update(double cte) {
   if (steer_value > 1.0) return 1.0;
   return steer_value;
 }
-
-double SteeringController::error() const {
-  return pid.TotalError();
-}
-
-std::vector<double> SteeringController::gains() const {
-   return pid.gains();
-}
-
-void SteeringController::adjust(const std::vector<double> &gains) {
-  pid.adjust(gains[0], gains[1], gains[2]);
-}
-

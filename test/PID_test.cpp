@@ -8,7 +8,6 @@ TEST_CASE("ThrottleController smoke test", "[ThrottleController]") {
     ThrottleController ctrl;
     
     REQUIRE(ctrl.update(-0.5) >= 0);
-    REQUIRE(ctrl.error() >= 0);
 }
 
 TEST_CASE("PID Optimization smoke test", "[Optimizer]") {

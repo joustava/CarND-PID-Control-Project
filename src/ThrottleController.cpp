@@ -18,16 +18,3 @@ double ThrottleController::update(double cte) {
   if (throttle_value > 1.0) return 0.95;
   return throttle_value;
 }
-
-double ThrottleController::error() const {
-  return pid.TotalError();
-}
-
-std::vector<double> ThrottleController::gains() const {
-   return pid.gains();
-}
-
-void ThrottleController::adjust(const std::vector<double> &gains) {
-  pid.adjust(gains[0], gains[1], gains[2]);
-}
-
